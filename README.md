@@ -16,7 +16,7 @@
 
 ---
 ## Task
- - [ ] Make WireFrame
+ - [x] Make WireFrame
  - [ ] Sign-Up
     - [ ] Make a Sign-Up Screen
     - [ ] Link Firebase
@@ -37,3 +37,15 @@
  - [ ] Modify-ToDoItem
     - [ ] Implement API to modify ToDoItem
     - [ ] Make a Screen
+
+---
+## Develpment Process
+
+### 1. UI Design(WireFrame)
+- Sign In/Up Screen
+
+   ![Sign In/Up Screen](https://drive.google.com/uc?export=view&id=1D2GGIX7-MYbWFHY26OMm7U62YO-uqbvt "Sign In/Up Screen")
+
+- Home Screen
+   ![Sign In/Up Screen](https://drive.google.com/uc?export=view&id=1AluR4TqqSDAdgvp2bbw8hMZKYs-2t2V1 "Sign In/Up Screen")
+
