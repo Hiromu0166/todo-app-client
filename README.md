@@ -79,3 +79,7 @@
    (Click [here](https://reactnavigation.org/en/) if you learn details about react-navigation.)
 
       `npm install --save react-navigation`
+
+### 2.2 Make Screen Transition Diagram
+
+   ![Screen Transition Diagram](https://drive.google.com/uc?export=view&id=1evLn7noiqVFz7oanRDpmxPemQmuzsm8y "Screen Transition Diagram")
