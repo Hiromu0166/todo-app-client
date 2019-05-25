@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
-import { Button, Text, View } from 'react-native';
+import { Button, Text, View, StyleSheet } from 'react-native';
 
 class SignIn extends Component {
     render() {
         return (
-            <View>
-                <Text>Here is SignIn Screen</Text>
+            <View style={styles.container}>
+                <View style={styles.textArea}>
+                    <Text style={styles.text}>SIGN IN</Text>
+                </View>
                 <Button
                     title="Move to Home Screen"
                     onPress={() => this.props.navigation.navigate('HomeScreen')}
@@ -20,4 +22,18 @@ class SignIn extends Component {
         );
     }
 }
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+    },
+    textArea: {
+        alignItems: 'center',
+        padding: 15,
+    },
+    text: {
+        fontSize: 25,
+    }
+})
+
 export default SignIn;
