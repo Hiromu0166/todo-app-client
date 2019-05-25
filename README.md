@@ -49,7 +49,7 @@
    ```
 
 
-## 3. Implement Rooting
+## 3. Rooting
 
 ### 3.1 Make Screen Transition Diagram
 
@@ -60,3 +60,98 @@
 - `npm install --save react-navigation`
 
    (Click [here](https://reactnavigation.org/en/) if you learn details about react-navigation.)
+
+
+### 3.3 Implement Rooting
+- Modify App.js
+   ``` JavaScript
+   import {createStackNavigator, createAppContainer} from 'react-navigation';
+   import SignInScreen from './src/screens/sign-in/SignIn';
+   import SignUpScreen from './src/screens/sign-up/SignUp';
+   import HomeScreen from './src/screens/home/Home';
+
+   const MainNavigator = createStackNavigator(
+   {
+      // Define Screen Components
+      SignInScreen: {screen: SignInScreen},
+      SignUpScreen: {screen: SignUpScreen},
+      HomeScreen: {screen: HomeScreen},
+   },
+   {
+      // Define initial route in a stack 
+      initialRouteName: "SignInScreen",
+   },
+   );
+
+   const App = createAppContainer(MainNavigator);
+
+   export default(App);
+
+   ```
+
+- Create Temporary Screens(Sign-In, Sign-Up, Home).
+   - src/screens/sign-in/SignIn.js
+
+   ``` JavaScript
+      import React, { Component } from 'react';
+      import { Button, Text, View } from 'react-native';
+
+      class SignIn extends Component {
+         render() {
+            return (
+                  <View>
+                     <Text>Here is SignIn Screen</Text>
+                     <Button
+                        title="Move to Home Screen"
+                        // Move to Home Screen when Button is pressed.
+                        onPress={() => this.props.navigation.navigate('HomeScreen')}
+                        containerStyle={[{margin: 5}]}
+                     />
+                     <Button
+                        title="Move to Sign Up Screen"
+                        // Move to SignUp Screen when Button is pressed.
+                        onPress={() => this.props.navigation.navigate('SignUpScreen')}
+                        containerStyle={[{margin: 5}]}
+                     />
+                  </View>
+            );
+         }
+      }
+      export default SignIn;
+   ```
+   - src/screens/sign-up/SignUp.js
+   ``` JavaScript
+      import React, { Component } from 'react';
+      import { Text, View } from 'react-native';
+
+      class  SignUp extends Component {
+         render() {
+            return (
+               <View>
+                  <Text>Here is SignUp Screen</Text>
+               </View>
+            );
+         }
+      }
+      export default SignUp;
+   ```
+   - src/screens/home/Home.js
+   ``` JavaScript
+      import React, { Component } from 'react';
+      import { Text, View } from 'react-native';
+      
+      class Home extends Component {
+         render() {
+            return (
+                  <View>
+                     <Text>Here is Home Screen</Text>
+                  </View>
+            );
+         }
+      }
+
+      export default Home;
+
+   ```
+
+- Deliverables until now
