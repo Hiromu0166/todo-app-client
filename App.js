@@ -13,6 +13,11 @@ const MainNavigator = createStackNavigator(
   {
     // Define initial route in a stack 
     initialRouteName: "SignInScreen",
+    defaultNavigationOptions: {
+      headerStyle: {
+        backgroundColor: '#1c388c',
+      },
+    },
   },
 );
 

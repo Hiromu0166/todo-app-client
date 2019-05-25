@@ -171,3 +171,23 @@
 - [React Native Material TextField](https://github.com/n4kz/react-native-material-textfield)
 
    `npm install --save react-native-material-textfield`
+
+---
+### 4.2 Implement Sign-In UI
+
+![Sign-In Screen Task](https://drive.google.com/uc?export=view&id=1Ra9ppsDzLAgd3oOQmEwU-BQMX0V7wFrZ "Sign-In Screen Task")
+
+#### 4.1 Change Header Color
+
+- Add defaultNavigationOptions to `App.js`
+   ``` JavaScript
+      ... other Code
+      initialRouteName: "SignInScreen",
+      // Add Below Code
+      defaultNavigationOptions: {
+         headerStyle: {
+         backgroundColor: '#1c388c',
+         },
+      },
+      ... other Code
+   ```
