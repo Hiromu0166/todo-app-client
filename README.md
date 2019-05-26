@@ -363,8 +363,16 @@ I use a existing button component(React Native Elements) to implement Signin and
          }
       });
    ```
-   
-   #### Completed Sign-In UI
+  
+#### Completed Sign-In UI
    
    ![signin_screen](https://github.com/Hiromu0166/todo-app-client/wiki/images/signin_screen.png)
    
+---
+### 4.3 Implement Sign-Up UI
+![Sign-Up Task](https://github.com/Hiromu0166/todo-app-client/wiki/images/signup_screen_task.png)
+
+---
+### 4.4 Implement Home UI
+
+![Home Screen Task](https://github.com/Hiromu0166/todo-app-client/wiki/images/home_screen_task.png)
