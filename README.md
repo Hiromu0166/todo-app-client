@@ -195,8 +195,9 @@
 #### 4.2.2 Place "SIGN IN" Label
 
 - Define styleSheet and apply it to `SignIn.js'.
+
    ``` JavaScript
-      import React, { Component } from 'react';
+   import React, { Component } from 'react';
    import { Button, Text, View, StyleSheet } from 'react-native';
 
    class SignIn extends Component {
@@ -236,4 +237,81 @@
 
    export default SignIn;
    ```
-   
+
+#### 4.2.3 Create Input Component
+
+- Create Input Componenet at `src/component/InputFieldWithIcon.js`
+
+   ```JavaScript
+   import React, { Component } from 'react';
+   import PropTypes from 'prop-types';
+   import { View, StyleSheet } from 'react-native';
+   import { TextField } from 'react-native-material-textfield';
+   import {  Icon } from 'react-native-elements';
+
+   class InputFieldWithIcon extends Component{
+      render() {
+         const {fieldName, iconName} = this.props;
+         return(
+               <View style={styles.container}>
+                  <View style={styles.iconArea}>
+                     <Icon 
+                           name={iconName}
+                           size={40}
+                           color='#1c388c'
+                     />
+                  </View>
+                  <View style={styles.inputArea}>
+                     <TextField
+                           label={fieldName}
+                           value=''
+                           labelHeight={28}
+                           containerStyle={{ position: 'absolute', top: 0, bottom: 0, left: 10, right: 0, }}
+                     />
+                  </View>
+               </View>
+         );
+      }
+   }
+
+   InputFieldWithIcon.prototypes = {
+      fieldName: PropTypes.string.isRequired,
+      iconName: PropTypes.string.isRequired,
+   };
+
+   const styles = StyleSheet.create({
+      container: {
+         flexDirection: 'row',
+         height: 65,
+      },
+      iconArea: {
+         width: 20 + "%",
+         justifyContent: 'center',
+         alignItems: 'center',
+      },
+      inputArea: {
+         width: 70 + "%",
+      },
+   });
+
+   export default InputFieldWithIcon;
+   ```
+
+- Place Input Component in `src/screens/sign-in/SignIn.js`
+
+   ``` JavaScript
+   ... other Code
+   // Place two input components below sign-in label
+   <View style={styles.textArea}>
+      <Text style={styles.text}>SIGN IN</Text>
+   </View>
+   <InputFieldWithIcon
+   fieldName='USER NAME'
+   iconName='person'
+   />
+   <InputFieldWithIcon
+   fieldName='PASSWORD'
+   iconName='vpn-key'
+   />
+   ...other Code
+   ```
