@@ -297,7 +297,7 @@
    export default InputFieldWithIcon;
    ```
 
-- Place Input Component in `src/screens/sign-in/SignIn.js`
+- Place Input Components(UserName and Password) in `src/screens/sign-in/SignIn.js`
 
    ``` JavaScript
    ... other Code
@@ -306,12 +306,60 @@
       <Text style={styles.text}>SIGN IN</Text>
    </View>
    <InputFieldWithIcon
-   fieldName='USER NAME'
-   iconName='person'
+      fieldName='USER NAME'
+      iconName='person'
    />
    <InputFieldWithIcon
-   fieldName='PASSWORD'
-   iconName='vpn-key'
+      fieldName='PASSWORD'
+      iconName='vpn-key'
    />
    ...other Code
+   ```
+
+#### 4.2.4 Place Button Component
+
+I use a existing button component(React Native Elements) to implement Signin and Sign up button. 
+
+- Place button Components(Signin and Sign up) and apply styles in `src/screens/sign-in/SignIn.js`
+
+   before
+   ```JavaScript
+      <Button
+         title="Move to Home Screen"
+         onPress={() => this.props.navigation.navigate('HomeScreen')}
+         containerStyle={[{ margin: 5 }]}
+      />
+      <Button
+         title="Move to Sign Up Screen"
+         onPress={() => this.props.navigation.navigate('SignUpScreen')}
+         containerStyle={[{ margin: 5 }]}
+      />
+   ```
+
+   after
+   ```JavaScript
+      // add import
+      import { Button } from 'react-native-elements';
+      // ...other code
+      <Button
+         title="SIGN IN"
+         buttonStyle={styles.button}
+         containerStyle={[{margin: 50}]}
+         onPress={() => this.props.navigation.navigate('HomeScreen')}
+      />
+      <Button
+         title="SIGN UP"
+         buttonStyle={styles.button}
+         containerStyle={[{marginHorizontal: 50}]}
+         onPress={() => this.props.navigation.navigate('SignUpScreen')}
+      />
+      // ...other code
+      const styles = StyleSheet.create({
+         // add below style
+         button: {
+            backgroundColor: '#1c388c',
+            height: 60,
+            borderRadius: 10
+         }
+      });
    ```

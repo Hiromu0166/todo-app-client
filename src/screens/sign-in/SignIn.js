@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Button, Text, View, StyleSheet } from 'react-native';
+import { Text, View, StyleSheet } from 'react-native';
+import { Button } from 'react-native-elements';
 import InputFieldWithIcon from '../../component/InputFieldWithIcon';
 
 class SignIn extends Component {
@@ -18,14 +19,16 @@ class SignIn extends Component {
                     iconName='vpn-key'
                 />
                 <Button
-                    title="Move to Home Screen"
+                    title="SIGN IN"
+                    buttonStyle={styles.button}
+                    containerStyle={[{margin: 50}]}
                     onPress={() => this.props.navigation.navigate('HomeScreen')}
-                    containerStyle={[{ margin: 5 }]}
                 />
                 <Button
-                    title="Move to Sign Up Screen"
+                    title="SIGN UP"
+                    buttonStyle={styles.button}
+                    containerStyle={[{marginHorizontal: 50}]}
                     onPress={() => this.props.navigation.navigate('SignUpScreen')}
-                    containerStyle={[{ margin: 5 }]}
                 />
             </View>
         );
@@ -42,6 +45,11 @@ const styles = StyleSheet.create({
     },
     text: {
         fontSize: 25,
+    },
+    button: {
+        backgroundColor: '#1c388c',
+        height: 60,
+        borderRadius: 10
     }
 })
 
