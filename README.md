@@ -451,3 +451,32 @@ I use a existing button component(React Native Elements) to implement Signin and
 ### 4.4 Implement Home UI
 
 ![Home Screen Task](https://github.com/Hiromu0166/todo-app-client/wiki/images/home_screen_task.png)
+
+#### 4.4.1 Display Title and Logout Button in Header
+
+- Modify `src/screens/home/Home.js`
+
+```JavaScript
+   // add import
+   import { Icon } from 'react-native-elements';
+   class Home extends Component {
+      // add bellow
+      static navigationOptions = ( {navigation} ) => ({
+        title: 'INBOX',
+        headerTintColor: '#fff',
+        headerTitleStyle: {
+            fontWeight: 'bold',
+        },
+        headerLeft: null,
+        headerRight:
+            <Icon
+                name='exit-to-app'
+                color='white'
+                size={30}
+                containerStyle={[{marginRight: 10}]}
+                onPress={() => {navigation.navigate('SignInScreen')}}
+            />
+         // ...other code
+    });
+   }
+```
