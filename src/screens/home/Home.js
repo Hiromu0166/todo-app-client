@@ -5,7 +5,7 @@ import ToDoItemList from '../../component/ToDoItemList';
 
 
 class Home extends Component {
-
+    
     static navigationOptions = ( {navigation} ) => ({
         title: 'INBOX',
         headerTintColor: '#fff',
@@ -25,11 +25,23 @@ class Home extends Component {
 
     render() {
         return (
-            <View>
+            <View style={ styles.container }>
                 <ToDoItemList/>
+                <Icon
+                    name="add-circle"
+                    size={60}
+                    color='#1c388c'
+                    containerStyle={[{position: 'absolute', bottom: 30, right: 45}]}
+                />
             </View>
         );
     }
 }
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+    },
+});
 
 export default Home;

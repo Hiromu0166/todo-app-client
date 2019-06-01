@@ -523,8 +523,7 @@ I use a existing button component(React Native Elements) to implement Signin and
    export default ToDoItemList;
 ```
 
-- Display ToDoItemList in HomeScreen
-- Modify `src/screens/home/Home.js`
+- Modify `src/screens/home/Home.js` to display ToDoItemList in HomeScreen
 
 ```JavaScript
    // add import
@@ -540,3 +539,36 @@ I use a existing button component(React Native Elements) to implement Signin and
       }
    }
 ```
+
+#### 4.4.3 Display Add Button in HomeScreen
+
+- Modify `src/screens/home/Home.js` to display Add Button in HomeScreen
+
+```JavaScript
+   class Home extends Component {
+      // ...other code
+      render() {
+        return (
+            <View style={ styles.container }>
+                <ToDoItemList/>
+                <Icon
+                    name="add-circle"
+                    size={60}
+                    color='#1c388c'
+                    containerStyle={[{position: 'absolute', bottom: 30, right: 45}]}
+                />
+            </View>
+        );
+      }
+   }
+
+   // Add style
+   const styles = StyleSheet.create({
+      container: {
+         flex: 1,
+      },
+   });
+
+   export default Home;
+```
+
