@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { Icon } from 'react-native-elements';
 import ToDoItemList from '../../component/ToDoItemList';
+import ToDoItemAddModal from '../../component/ToDoItemAddModal';
 
 
 class Home extends Component {
-    
+
     static navigationOptions = ( {navigation} ) => ({
         title: 'INBOX',
         headerTintColor: '#fff',
@@ -26,6 +27,7 @@ class Home extends Component {
     render() {
         return (
             <View style={ styles.container }>
+                <ToDoItemAddModal/>
                 <ToDoItemList/>
                 <Icon
                     name="add-circle"
