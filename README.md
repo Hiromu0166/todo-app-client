@@ -480,3 +480,63 @@ I use a existing button component(React Native Elements) to implement Signin and
     });
    }
 ```
+
+#### 4.4.2 Create ToDoItemList Component with MockData
+
+- Create `src/component/ToDoItemList.js`
+
+```JavaScript
+   import React, { Component } from 'react';
+   import { FlatList } from 'react-native';
+   import { ListItem, Icon } from 'react-native-elements';
+
+
+   MOCK_DATA = [{title:'Buy shampoo'}, {title: 'Read a book'}, {title: 'Clean room'}, {title: 'Go city hall'}, {title: 'Thraw array tradh'}]; 
+
+   class ToDoItemList extends Component {
+
+      renderItem = ({ item }) => (
+         <ListItem
+               title={item.title}
+               bottomDivider={true}
+               rightIcon={
+                  <Icon
+                     name="done"
+                     size={ 30 }
+                     color='#1c388c'
+                  />
+               }
+         />
+      );
+      
+      render() {
+         return(
+               <FlatList
+                  keyExtractor = {(item, index) => item.title}
+                  data = { MOCK_DATA }
+                  renderItem={this.renderItem}
+               />
+         );
+      }
+   }
+
+   export default ToDoItemList;
+```
+
+- Display ToDoItemList in HomeScreen
+- Modify `src/screens/home/Home.js`
+
+```JavaScript
+   // add import
+   import ToDoItemList from '../../component/ToDoItemList';
+   class Home extends Component {
+      // ...other code
+      render() {
+        return (
+            <View>
+                <ToDoItemList/>
+            </View>
+        );
+      }
+   }
+```

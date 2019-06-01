@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import { Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { Icon } from 'react-native-elements';
+import ToDoItemList from '../../component/ToDoItemList';
+
 
 class Home extends Component {
 
@@ -24,7 +26,7 @@ class Home extends Component {
     render() {
         return (
             <View>
-                <Text>Here is Home Screen</Text>
+                <ToDoItemList/>
             </View>
         );
     }
