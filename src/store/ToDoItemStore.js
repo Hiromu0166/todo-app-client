@@ -19,6 +19,16 @@ class ToDoItemStore {
         this.toDoItems = this.toDoItems.filter(item => item.id !== id);
     }
 
+    @action
+    updateToDoItem = ( id, updateTitle) => {
+        const targetIndex = this.toDoItems.findIndex((element) => {
+            return id === element.id;
+        });
+        const updateToDoItem = this.toDoItems[targetIndex];
+        updateToDoItem.title = updateTitle;
+        this.toDoItems.splice(targetIndex, 1, updateToDoItem);
+    }
+
 }
 
 export default ToDoItemStore;

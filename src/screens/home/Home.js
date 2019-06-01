@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { observer } from 'mobx-react';
+import { observable } from 'mobx';
 import { Icon } from 'react-native-elements';
 import ToDoItemList from '../../component/ToDoItemList';
 import ToDoItemAddModal from '../../component/ToDoItemAddModal';
+import ToDoItemUpdateModal from '../../component/ToDoItemUpdateModal';
 import ToDoItemStore from '../../store/ToDoItemStore';
-import { observable } from 'mobx';
 
 @observer
 class Home extends Component {
@@ -14,10 +15,15 @@ class Home extends Component {
 
     @observable isShowAddItemModal;
 
+    @observable isShowUpdateItemModal;
+
+    @observable selectedToDoItem;
+
     constructor() {
         super();
         this.toDoItemStore = new ToDoItemStore();
         this.isShowAddItemModal = false;
+        this.isShowUpdateItemModal = false;
     }
 
     static navigationOptions = ( {navigation} ) => ({
@@ -37,6 +43,18 @@ class Home extends Component {
             />
     });
 
+    selectToDoItem = ( item ) => {
+        this.selectedToDoItem = item;
+    }
+
+    openUpdateToDoItemModal = () => {
+        this.isShowUpdateItemModal = true;
+    }
+
+    closeUpdateItemModal = () => {
+        this.isShowUpdateItemModal = false;
+    }
+
     closeAddItemModal = () => {
         this.isShowAddItemModal = false;
     }
@@ -46,12 +64,20 @@ class Home extends Component {
             <View style={ styles.container }>
                 <ToDoItemAddModal
                     isShow={ this.isShowAddItemModal }
-                    addToDoItem={ this.toDoItemStore.addToDoItem }
                     closeModal={ this.closeAddItemModal }
+                    addToDoItem={ this.toDoItemStore.addToDoItem }
+                />
+                <ToDoItemUpdateModal
+                    isShow={ this.isShowUpdateItemModal}
+                    closeModal={ this.closeUpdateItemModal }
+                    selectedToDoItem={ this.selectedToDoItem }
+                    updateToDoItem={ this.toDoItemStore.updateToDoItem}
                 />
                 <ToDoItemList
                     toDoItems={ this.toDoItemStore.toDoItemPlainArray }
                     finishToDoItem={ this.toDoItemStore.finishToDoItem}
+                    openUpdateToDoItemModal={ this.openUpdateToDoItemModal }
+                    selectToDoItem={ this.selectToDoItem }
                 />
                 <Icon
                     name="add-circle"

@@ -1,16 +1,42 @@
 import React , { Component } from 'react';
 import { Dimensions, Modal, StyleSheet, Text, TextInput,  View } from 'react-native';
+import PropTypes from 'prop-types';
 import { Button } from 'react-native-elements';
 import ModalBackground from './ModalBackground';
+import { observable } from 'mobx';
+import { observer } from 'mobx-react';
 
 const SCRENN_WIDTH = Dimensions.get('window').width;
 const SCRENN_HEIGHT = Dimensions.get('window').height;
 
+@observer
 class ToDoItemUpdateModal extends Component {
+
+    @observable editingToDoItemTitle = '';
+
+    componentDidUpdate() {
+        if(this.editingToDoItemTitle || !this.props.isShow) return;
+        this.editingToDoItemTitle = this.props.selectedToDoItem.title;
+    }
+
+    onChangeText = ( text ) => {
+        this.editingToDoItemTitle = text;
+    }
+
+    updateToDoItemHandler = () => {
+        this.props.updateToDoItem(this.props.selectedToDoItem.id, this.editingToDoItemTitle);
+        this.closeModal();
+    }
+
+    closeModal = () => {
+        this.props.closeModal();
+        this.editingToDoItemTitle = '';
+    }
+
     render() {
         return(
             <Modal
-                visible={true}
+                visible={this.props.isShow}
                 transparent={true}
             >
                 <ModalBackground/>
@@ -20,7 +46,8 @@ class ToDoItemUpdateModal extends Component {
                     </View>
                     <View style={styles.textInputArea}>
                         <TextInput
-                            value="Buy sham"
+                            value={this.editingToDoItemTitle}
+                            onChangeText={(text) => this.onChangeText(text)}
                         />
                     </View>
                     <View style={styles.buttonGroupArea}>
@@ -30,6 +57,7 @@ class ToDoItemUpdateModal extends Component {
                                 type="clear"
                                 titleStyle={[{color: '#1c388c'}, {fontSize: 15}]}
                                 buttonStyle={styles.button}
+                                onPress={() => this.closeModal()}
                             />
                         </View>
                         <View style={styles.buttonArea}>
@@ -38,6 +66,7 @@ class ToDoItemUpdateModal extends Component {
                                 type="clear"
                                 titleStyle={[{color: '#1c388c'}, {fontSize: 15}]}
                                 buttonStyle={styles.button}
+                                onPress={() => this.updateToDoItemHandler()}
                             />
                         </View>
                     </View>
@@ -45,6 +74,13 @@ class ToDoItemUpdateModal extends Component {
             </Modal>
         );
     }
+}
+
+ToDoItemUpdateModal.prototypes = {
+    isShow: PropTypes.bool.isRequired,
+    closeModal:PropTypes.bool.isRequired,
+    selectedToDoItem: PropTypes.object.isRequired,
+    updateToDoItem: PropTypes.func.isRequired,
 }
 
 const styles = StyleSheet.create({

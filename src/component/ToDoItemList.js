@@ -7,9 +7,15 @@ import { observer } from 'mobx-react';
 @observer
 class ToDoItemList extends Component {
 
+    onPressToDoItem = ( item ) => {
+        this.props.selectToDoItem(item);
+        this.props.openUpdateToDoItemModal();
+    }
+
     renderItem = ({ item }) => (
         <ListItem
             title={item.title}
+            onPress={ () => this.onPressToDoItem(item) }
             bottomDivider={true}
             rightIcon={
                 <Icon
@@ -27,15 +33,17 @@ class ToDoItemList extends Component {
             <FlatList
                 keyExtractor = {(item, index) => item.id}
                 data = { this.props.toDoItems }
-                renderItem={this.renderItem}
+                renderItem={ this.renderItem }
             />
         );
     }
 }
 
 ToDoItemList.prototypes = {
+    openUpdateToDoItemModal: PropTypes.func,
     toDoItems: PropTypes.array,
     finishToDoItem: PropTypes.func,
+    selectToDoItem: PropTypes.func,
 };
 
 export default ToDoItemList;
