@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import { FlatList } from 'react-native';
+import PropTypes from 'prop-types';
 import { ListItem, Icon } from 'react-native-elements';
-
-
-MOCK_DATA = [{title:'Buy shampoo'}, {title: 'Read a book'}, {title: 'Clean room'}, {title: 'Go city hall'}, {title: 'Thraw array tradh'}]; 
 
 class ToDoItemList extends Component {
 
@@ -24,12 +22,16 @@ class ToDoItemList extends Component {
     render() {
         return(
             <FlatList
-                keyExtractor = {(item, index) => item.title}
-                data = { MOCK_DATA }
+                keyExtractor = {(item, index) => item.id}
+                data = { this.props.toDoItems }
                 renderItem={this.renderItem}
             />
         );
     }
 }
+
+ToDoItemList.prototypes = {
+    toDoItems: PropTypes.array,
+};
 
 export default ToDoItemList;

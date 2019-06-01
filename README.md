@@ -852,7 +852,7 @@ I use a existing button component(React Native Elements) to implement Signin and
          "jsx": "preserve"
       ```
 
-### 5.2 Create model and data sore
+### 5.2 Implement Add ToDoItem Function
 
 #### 5.2.1 Create todoItem model
 

@@ -1,10 +1,24 @@
 import React, { Component } from 'react';
 import { StyleSheet, View } from 'react-native';
+import { observer } from 'mobx-react';
 import { Icon } from 'react-native-elements';
 import ToDoItemList from '../../component/ToDoItemList';
-import ToDoItemUpdateModal from '../../component/ToDoItemUpdateModal';
+import ToDoItemAddModal from '../../component/ToDoItemAddModal';
+import ToDoItemStore from '../../store/ToDoItemStore';
+import { observable } from 'mobx';
 
+@observer
 class Home extends Component {
+
+    toDoItemStore;
+
+    @observable isShowAddItemModal;
+
+    constructor() {
+        super();
+        this.toDoItemStore = new ToDoItemStore();
+        this.isShowAddItemModal = false;
+    }
 
     static navigationOptions = ( {navigation} ) => ({
         title: 'INBOX',
@@ -17,22 +31,33 @@ class Home extends Component {
             <Icon
                 name='exit-to-app'
                 color='white'
-                size={30}
-                containerStyle={[{marginRight: 10}]}
-                onPress={() => {navigation.navigate('SignInScreen')}}
+                size={ 30 }
+                containerStyle={ [{marginRight: 10}] }
+                onPress={ () => { navigation.navigate('SignInScreen') } }
             />
     });
+
+    closeAddItemModal = () => {
+        this.isShowAddItemModal = false;
+    }
 
     render() {
         return (
             <View style={ styles.container }>
-                <ToDoItemUpdateModal/>
-                <ToDoItemList/>
+                <ToDoItemAddModal
+                    isShow={ this.isShowAddItemModal }
+                    addToDoItem={ this.toDoItemStore.addToDoItem }
+                    closeModal={ this.closeAddItemModal }
+                />
+                <ToDoItemList
+                    toDoItems={ this.toDoItemStore.toDoItemPlainArray }
+                />
                 <Icon
                     name="add-circle"
-                    size={60}
+                    size={ 60 }
                     color='#1c388c'
-                    containerStyle={[{position: 'absolute', bottom: 30, right: 45}]}
+                    containerStyle={ [{position: 'absolute', bottom: 30, right: 45}] }
+                    onPress={ () => { this.isShowAddItemModal = true } }
                 />
             </View>
         );
