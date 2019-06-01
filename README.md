@@ -711,4 +711,6 @@ I use a existing button component(React Native Elements) to implement Signin and
    export default ToDoItemAddModal;
 ```
 
-
+#### Completed AddItemModal UI
+   
+   ![modal_add_item](https://github.com/Hiromu0166/todo-app-client/wiki/images/modal_add_item.png)
