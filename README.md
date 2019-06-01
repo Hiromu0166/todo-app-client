@@ -572,3 +572,6 @@ I use a existing button component(React Native Elements) to implement Signin and
    export default Home;
 ```
 
+#### Completed Sign-In UI
+   
+   ![home_screen](https://github.com/Hiromu0166/todo-app-client/wiki/images/home_screen.png)
