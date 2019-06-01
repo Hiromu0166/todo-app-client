@@ -4,7 +4,6 @@ import { Icon } from 'react-native-elements';
 import ToDoItemList from '../../component/ToDoItemList';
 import ToDoItemUpdateModal from '../../component/ToDoItemUpdateModal';
 
-
 class Home extends Component {
 
     static navigationOptions = ( {navigation} ) => ({

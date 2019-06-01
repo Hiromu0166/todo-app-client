@@ -824,3 +824,30 @@ I use a existing button component(React Native Elements) to implement Signin and
    ![modal_update_item](https://github.com/Hiromu0166/todo-app-client/wiki/images/modal_update_item.png)
 
 ---
+## 5. Implement Add, Delete, Update ToDoItem using MobX
+
+#### 5.1 Setup
+
+- Install MobX for state management
+
+   `npm install --save mobx mobx-react`
+
+- Install Type Script and modify setting file to remove `experimentalDecorators warning`
+
+      `npm install --save-dev typescript`
+   
+      Make tsconfig.json
+
+      `./node_modules/.bin/tsc --init`
+
+      Change extension
+
+      `mv App.js App.tsx`
+
+      Add below option to `tsconfig.json` 
+
+      ```
+         "experimentalDecorators": true
+         "allowJs": true
+         "jsx": "preserve"
+      ```
