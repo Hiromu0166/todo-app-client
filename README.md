@@ -826,7 +826,7 @@ I use a existing button component(React Native Elements) to implement Signin and
 ---
 ## 5. Implement Add, Delete, Update ToDoItem using MobX
 
-#### 5.1 Setup
+### 5.1 Setup
 
 - Install MobX for state management
 
@@ -851,3 +851,29 @@ I use a existing button component(React Native Elements) to implement Signin and
          "allowJs": true
          "jsx": "preserve"
       ```
+
+### 5.2 Create model and data sore
+
+#### 5.2.1 Create todoItem model
+
+- Create `src/model/ToDoItem.js`
+
+```JavaScript
+   class ToDoItem {
+      id = '';
+      title = '';
+      finished = false;
+
+      constructor(title) {
+         this.id = this.generateId();
+         this.title = title;
+      }
+
+      generateId = () => {
+         return new Date().getTime().toString(16) + Math.floor(1000 * Math.random()).toString(16);
+      }
+   }
+
+   export default ToDoItem;
+```
+
