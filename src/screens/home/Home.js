@@ -51,6 +51,7 @@ class Home extends Component {
                 />
                 <ToDoItemList
                     toDoItems={ this.toDoItemStore.toDoItemPlainArray }
+                    finishToDoItem={ this.toDoItemStore.finishToDoItem}
                 />
                 <Icon
                     name="add-circle"

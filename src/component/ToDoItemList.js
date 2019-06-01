@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import { FlatList } from 'react-native';
 import PropTypes from 'prop-types';
 import { ListItem, Icon } from 'react-native-elements';
+import { observer } from 'mobx-react';
 
+@observer
 class ToDoItemList extends Component {
 
     renderItem = ({ item }) => (
@@ -14,6 +16,7 @@ class ToDoItemList extends Component {
                     name="done"
                     size={ 30 }
                     color='#1c388c'
+                    onPress={ () => this.props.finishToDoItem(item.id)}
                 />
             }
         />
@@ -32,6 +35,7 @@ class ToDoItemList extends Component {
 
 ToDoItemList.prototypes = {
     toDoItems: PropTypes.array,
+    finishToDoItem: PropTypes.func,
 };
 
 export default ToDoItemList;

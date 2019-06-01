@@ -13,6 +13,12 @@ class ToDoItemStore {
     addToDoItem = ( title ) => {
         this.toDoItems = [...this.toDoItems, new ToDoItem(title)];
     }
+
+    @action
+    finishToDoItem = ( id ) => {
+        this.toDoItems = this.toDoItems.filter(item => item.id !== id);
+    }
+
 }
 
 export default ToDoItemStore;
