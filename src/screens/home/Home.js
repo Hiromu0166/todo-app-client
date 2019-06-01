@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { Icon } from 'react-native-elements';
 import ToDoItemList from '../../component/ToDoItemList';
-import ToDoItemAddModal from '../../component/ToDoItemAddModal';
+import ToDoItemUpdateModal from '../../component/ToDoItemUpdateModal';
 
 
 class Home extends Component {
@@ -27,7 +27,7 @@ class Home extends Component {
     render() {
         return (
             <View style={ styles.container }>
-                <ToDoItemAddModal/>
+                <ToDoItemUpdateModal/>
                 <ToDoItemList/>
                 <Icon
                     name="add-circle"
