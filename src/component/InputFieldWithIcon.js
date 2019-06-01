@@ -30,7 +30,7 @@ class InputFieldWithIcon extends Component{
 }
 
 InputFieldWithIcon.prototypes = {
-    fieldName: PropTypes.object.isRequired,
+    fieldName: PropTypes.string.isRequired,
     iconName: PropTypes.string.isRequired,
 };
 
