@@ -1,3 +1,4 @@
+import React, { Component } from 'react';
 import { createStackNavigator, createAppContainer } from 'react-navigation';
 import SignInScreen from './src/screens/sign-in/SignIn';
 import SignUpScreen from './src/screens/sign-up/SignUp';
@@ -21,6 +22,14 @@ const MainNavigator = createStackNavigator(
   },
 );
 
-const App = createAppContainer(MainNavigator);
+const AppContainer = createAppContainer(MainNavigator);
+
+class App extends Component {
+  render() {
+    return(
+      <AppContainer/>
+    );
+  }
+}
 
 export default (App);
