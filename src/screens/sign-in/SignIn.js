@@ -11,8 +11,8 @@ class SignIn extends Component {
                     <Text style={styles.text}>SIGN IN</Text>
                 </View>
                 <InputFieldWithIcon
-                    fieldName='USER NAME'
-                    iconName='person'
+                    fieldName='MAIL ADDRESS'
+                    iconName='email'
                 />
                 <InputFieldWithIcon
                     fieldName='PASSWORD'
