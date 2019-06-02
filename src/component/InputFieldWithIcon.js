@@ -21,6 +21,7 @@ class InputFieldWithIcon extends Component{
                         label={fieldName}
                         value=''
                         labelHeight={28}
+                        secureTextEntry={this.props.secureTextEntry}
                         containerStyle={{ position: 'absolute', top: 0, bottom: 0, left: 10, right: 0, }}
                     />
                 </View>
@@ -32,6 +33,11 @@ class InputFieldWithIcon extends Component{
 InputFieldWithIcon.prototypes = {
     fieldName: PropTypes.string.isRequired,
     iconName: PropTypes.string.isRequired,
+    secureTextEntry: PropTypes.bool,
+};
+
+InputFieldWithIcon.defaultProps ={
+    secureTextEntry: false,
 };
 
 const styles = StyleSheet.create({

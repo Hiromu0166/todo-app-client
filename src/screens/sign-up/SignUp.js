@@ -30,10 +30,12 @@ class SignUp extends Component {
                 <InputFieldWithIcon
                     fieldName='PASSWORD'
                     iconName='vpn-key'
+                    secureTextEntry={true}
                 />
                 <InputFieldWithIcon
                     fieldName='RE-TYPE PASSWORD'
                     iconName='vpn-key'
+                    secureTextEntry={true}
                 />
                 <Button
                     title="REGISTER"

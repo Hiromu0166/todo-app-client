@@ -17,6 +17,7 @@ class SignIn extends Component {
                 <InputFieldWithIcon
                     fieldName='PASSWORD'
                     iconName='vpn-key'
+                    secureTextEntry={true}
                 />
                 <Button
                     title="SIGN IN"
