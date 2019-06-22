@@ -1,4 +1,4 @@
-export default class SignUpInfo {
+export default class UserInfo {
     email = '';
     password = '';
 
