@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 import { Button, Icon } from 'react-native-elements';
+import firebase from 'firebase';
 import InputFieldWithIcon from '../../component/InputFieldWithIcon';
+import SignUpInfo from './SignUpInfo';
 
 class SignUp extends Component {
 
@@ -17,6 +19,20 @@ class SignUp extends Component {
             />,
     });
 
+    signUpInfo = new SignUpInfo();
+
+    registerUser = async () => {
+        const { email, password } = this.signUpInfo;
+        try {
+            await firebase.auth().createUserWithEmailAndPassword(email, password);
+            this.props.navigation.navigate('HomeScreen');
+        } catch(e) {
+            alert(e.message);
+        } finally {
+            this.signUpInfo.reset();
+        }
+    }
+
     render() {
         return (
             <View style={styles.container}>
@@ -26,21 +42,19 @@ class SignUp extends Component {
                 <InputFieldWithIcon
                     fieldName='MAIL ADDRESS'
                     iconName='email'
+                    onChangeText={ (email) => this.signUpInfo.email = email } 
                 />
                 <InputFieldWithIcon
                     fieldName='PASSWORD'
                     iconName='vpn-key'
                     secureTextEntry={true}
-                />
-                <InputFieldWithIcon
-                    fieldName='RE-TYPE PASSWORD'
-                    iconName='vpn-key'
-                    secureTextEntry={true}
+                    onChangeText={ (password) => this.signUpInfo.password = password }
                 />
                 <Button
                     title="REGISTER"
                     buttonStyle={styles.button}
                     containerStyle={[{margin: 50}]}
+                    onPress={() => this.registerUser()}
                 />
             </View>
         );

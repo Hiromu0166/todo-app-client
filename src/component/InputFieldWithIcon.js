@@ -20,6 +20,7 @@ class InputFieldWithIcon extends Component{
                     <TextField
                         label={fieldName}
                         value=''
+                        onChangeText = { (value) => this.props.onChangeText(value) }
                         labelHeight={28}
                         secureTextEntry={this.props.secureTextEntry}
                         containerStyle={{ position: 'absolute', top: 0, bottom: 0, left: 10, right: 0, }}
@@ -34,6 +35,7 @@ InputFieldWithIcon.prototypes = {
     fieldName: PropTypes.string.isRequired,
     iconName: PropTypes.string.isRequired,
     secureTextEntry: PropTypes.bool,
+    onChangeText: PropTypes.func,
 };
 
 InputFieldWithIcon.defaultProps ={
